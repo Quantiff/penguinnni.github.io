@@ -5,7 +5,7 @@
   transition: 0.3s all ease-out;
   color: #414052;
   font-size: 8em;
-  cursor: pointer;
+  cursor: default;
 }
 .penguinnni:hover{
     transition: 0.50s all ease-out;
