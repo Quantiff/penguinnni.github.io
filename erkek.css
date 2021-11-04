@@ -1,0 +1,32 @@
+a {
+    text-decoration: none;
+    transition: 0.3s all ease-out;
+    color: rgb(255, 255, 255);
+}
+
+a:hover {
+    transition: 0.3s all ease-out;
+    color: rgb(202, 17, 17);
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    transition: 0.3s all ease-out;
+    color: rgb(0, 0, 0);
+}
+
+h1:hover {
+    transition: 0.3s all ease-out;
+    color: rgb(0, 217, 255);
+}
+
+#content {
+    max-width: 100%;
+    margin: auto;
+    left: 50%;
+    bottom: 50%;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+}

@@ -1,0 +1,26 @@
+    a {
+        text-decoration: none;
+        transition: 0.3s all ease-out;
+        color: whitesmoke;
+    }
+    
+    a:hover {
+        transition: 0.3s all ease-out;
+        color: rgb(255, 255, 255);
+        text-shadow: 3px 8px 8px rgb(173, 173, 173);
+    }
+    
+    h1 {
+        font-family: 'Roboto', sans-serif;
+        text-decoration: none;
+        transition: 0.3s all ease-out;
+        color: rgb(230, 230, 230);
+    }
+    
+    h1:hover {
+        transition: 0.3s all ease-out;
+        color: rgb(255, 255, 255);
+        margin-top:90px;
+       
+    }
+    

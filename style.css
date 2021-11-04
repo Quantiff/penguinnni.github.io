@@ -6,6 +6,7 @@
   color: #414052;
   font-size: 8em;
   cursor: default;
+  margin: 0;
 }
 .penguinnni:hover{
     transition: 0.50s all ease-out;
@@ -13,8 +14,6 @@
     color: #f8da69;
     
   }
-
-
 .feedback {
   --normal: #414052;
   --normal-shadow: #313140;
@@ -30,10 +29,10 @@
   --active-shadow-angry: #e94f1d;
   --hover: #454456;
   --hover-shadow-top: #59586b;
-  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
+  margin: 0;
 }
 .feedback label {
   position: relative;
@@ -376,6 +375,26 @@
     box-shadow: inset 3px -3px 4px var(--active-shadow), inset 0 8px 10px var(--active-shadow-angry);
   }
 }
+@media screen and (max-height:850px) {
+  .feedback{
+    margin-top: 50px;
+  }
+}
+@media screen and (max-height:750px) {
+  .feedback{
+    margin-top: 100px;
+  }
+}
+@media screen and (max-height:650px) {
+  .feedback{
+    margin-top: 100px;
+  }
+}
+@media screen and (max-height:550px) {
+  .feedback{
+    margin-top: 100px;
+  }
+}
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -396,13 +415,13 @@ body {
   align-items: center;
   background: #181820;
 }
-body .twitter {
+body .yt {
   position: fixed;
   display: block;
   right: 32px;
   bottom: 22px;
 }
-body .twitter svg {
+body .yt svg {
   width: 52px;
   height: 52px;
   fill: #f00e0e;
