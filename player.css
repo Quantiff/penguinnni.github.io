@@ -1,0 +1,143 @@
+.muzik-calar{
+  max-width: 800px;
+  min-width: 600px;
+  margin: auto;
+}
+.player {
+  max-width: 800px;
+  min-width: 600px;
+  float: left;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.track-art {
+  margin: 25px;
+  height: 250px;
+  width: 250px;
+  background-image: url("resimler/loading.gif");
+  background-size: cover;
+  border-radius: 15%;
+
+}
+
+.now-playing {
+  font-size: 1rem;
+}
+
+.track-name {
+  font-size: 2.4rem;
+  color: hsl(0, 0%, 51%);
+  animation: lights 5s 750ms linear infinite;
+  text-align: center;
+}
+
+.track-artist {
+  font-size: 1.5rem;
+      color: hsl(0, 0%, 51%);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.playpause-track, .prev-track, .next-track , .random-play , .external-link {
+  padding: 25px;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  transition: all 0.1s ease-in;
+}
+
+.playpause-track:hover, .prev-track:hover, .next-track:hover, .random-play:hover , .external-link:hover {
+  transition: all 0.2s ease-in;
+  color:rgb(192, 0, 0);
+}
+
+.slider_container {
+  width: 75%;
+  width: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* Modify the appearance of the slider */
+.seek_slider, .volume_slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 1px;
+  background-color:rgb(192, 0, 0);
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border: transparent;
+}
+
+/* Modify the appearance of the slider thumb */
+.seek_slider::-webkit-slider-thumb, .volume_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.seek_slider:hover, .volume_slider:hover {
+  opacity: 1.0;
+}
+
+.seek_slider {
+  width: 60%;
+}
+
+.volume_slider {
+  width: 30%;
+}
+
+.current-time, .total-duration {
+  padding: 10px;
+}
+
+i.fa-volume-down, i.fa-volume-up {
+  padding: 10px;
+}
+
+i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
+  cursor: pointer;
+}
+@media only screen and (max-height:700px){
+  .left{
+      max-height: 340px;
+  }
+  .playlist-img{
+      top: 420px;
+  }
+  .right{
+      max-height: 600px;
+  }
+  .icon-ana{
+    font-size: 1.5em;
+  }
+  .icon-buyuk{
+      font-size:2.5em;
+  }
+  .track-art {
+    height: 200px;
+    width: 200px;
+    background-image: url("resimler/loading.gif");
+  }
+}

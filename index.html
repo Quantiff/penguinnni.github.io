@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/uicons-regular-rounded.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="player.css">
+  <title>Penguinnni</title>
+</head>
+<style>
+    canvas{
+        background:#16181B;
+        position: absolute;
+        z-index: -3;
+        filter: blur(5px);
+    }
+  body{
+        overflow :scroll;
+        font-family: 'Red Hat Display', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: hsl(230, 40%, 80%);
+        background: linear-gradient(135deg, hsl(230, 40%, 12%), hsl(230, 20%, 7%));
+        max-height: 1080px;
+        min-height: 700px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        user-select: none;
+    }
+    .kapsayici{
+        margin: auto;
+    }
+    .top{
+        color: white;
+        background-color: rgba(0, 0, 0, 0.267);
+        width: 100%;
+        height: 85px;
+        align-items: center;
+        display: flex;
+        backdrop-filter: blur(10px);
+    }
+    .top img{
+        float: left;
+        padding-left: 20px; 
+    }
+    .top p{
+        padding-left: 30px; 
+        font-size: 3.6em;
+        cursor: default;
+        color: hsl(0, 0%, 51%);
+        animation: lights 5s 750ms linear infinite;
+    }
+    .kutular{
+        margin: auto;
+    }
+    .menu{
+        font-size: 1.6em;
+        float: left;
+        margin-right: 50px;
+        text-align: center;    
+    }
+    .menu a{
+        text-decoration: none;
+        transition: all 0.2s ease-out;
+        color: white; 
+    }
+    .menu a:hover{
+        transition: all 0.2s ease-out;
+        text-decoration: none;
+        color:rgb(192, 0, 0);
+    }
+    .login{
+        font-size: 1.5em;
+        margin-right: 40px;
+    }
+    .login button{
+        margin-left: 20px;
+        border: transparent;
+        color: black;
+        background-color: white;
+        width: 130px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: all 0.3s ease-in;
+        -moz-transition: all 0.3s ease-in;
+        -webkit-transition: all 0.3s ease-in;
+        -ms-transition: all 0.2s ease-in;
+    }
+    .login a{
+        transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+    .login a:hover{
+        color:rgb(192, 0, 0);
+    }
+    hr{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: left;
+        border-color:black ;
+    }
+    .uc{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .left{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        color: antiquewhite;
+        background-color: #00000067;
+        max-width: 250px;
+        max-height: 600px;
+        min-height: 200px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+    .right{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        color: antiquewhite;
+        background-color: #0E1012;
+        width: 250px;
+        height: 100%;
+        max-height: 850px;
+        text-align: center;
+    }
+    .playlist-img{
+    width: 250px;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.575);
+    position: fixed;
+    left: 0px;
+    top: 685px;
+    background-size: cover;
+    float: left;
+    z-index: -1;
+    }
+    @media only screen and (max-height:900px){
+    .left{
+        max-height: 540px;
+    }
+    .playlist-img{
+        top: 620px;
+    }
+    .right{
+        max-height: 800px;
+    }
+}
+    @media only screen and (max-height:800px){
+    .left{
+        max-height: 435px;
+    }
+    .playlist-img{
+        top: 510px;
+    }
+    .right{
+        max-height: 700px;
+    }
+}
+.icon-ana{
+      font-size: 2em;
+    }
+.icon-buyuk{
+    font-size:3.5em;
+}
+@media only screen and (max-height:700px){
+    .left{
+        max-height: 340px;
+    }
+    .playlist-img{
+        top: 420px;
+    }
+    .right{
+        max-height: 600px;
+    }
+    .icon-ana{
+      font-size: 1.5em;
+    }
+    .icon-buyuk{
+        font-size:2.5em;
+    }
+}
+    #style-4::-webkit-scrollbar
+    {
+        width: 5px;
+    }
+    #style-4::-webkit-scrollbar-thumb
+    {
+        background-color: white;
+    }
+
+    .left hr,.right hr{
+        width: 200px;
+        margin-left: 20px; 
+        border-color: #212529;
+    }
+    .listeler{
+        transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        color: rgba(255, 255, 255, 0.63); 
+        text-align: center;
+        align-items: center;
+        display:flex;
+        justify-content: center;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    .listeler:hover{
+        color: white;
+    }
+    .playlist{
+        transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        color: rgb(255, 255, 255);
+        font-size: 1.5em;
+        cursor: default;
+        width: 240px;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        display:grid;
+        padding-bottom: 5px;
+        background-color: rgb(0, 0, 0);
+        position: sticky;
+        top: 0px;
+        margin-bottom: 10px;
+        left: 5px;
+    }
+    .playlist hr{
+        width: 200px;
+        margin-left: 20px; 
+        border-color: hsl(0, 0%, 0%);
+    }
+    @keyframes lights {
+  0% {
+    color: hsl(0, 0%, 51%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(0, 0%, 73%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(0, 0%, 86%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(0, 0%, 73%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(0, 0%, 51%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+}
+</style>
+<body>
+    <canvas id="canvas" ></canvas>
+    <div class="kapsayici">
+        <div class="top">
+            <a href="index.html"><img src="resimler/logo.png" width="75" height="75"></a>
+            <div><p>Penguinnni</p></div>
+            <div class="kutular">
+                <div class="menu"><a href="index.html">Ana Sayfa</a></div>
+                <div class="menu"><a href="destek.html">Destek</a></div>
+                <div class="menu"><a href="indir.html">İndir</a></div>
+                <div class="menu"><a href="hakkimizda.html">Hakkımızda</a></div>
+            </div>
+            <div class="login"><a href="login.html">Kayıt Ol</a><a href="login.html"><button>Oturum Aç</button></a></div>
+        </div>
+    <div class="uc">
+        <div class="left" id="style-4">    
+            <div class="playlist"><b>Çalma Listelerin</b></div>
+            <div class="listeler" onclick="getTracks2()">S L O W E D + R E V E R B</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('1ESRG72XXQUDLCeqaSCoGo','Yabancı Şarkılar')"  id="yabanci">Yabancı Şarkılar</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('3P4jad5GrwyWaNKh9GB3bE','Türkçe Şarkılar')" id="Turkce">Türkçe Şarkılar</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('01VSqJxifWtiWkLhRP2wny','Mazda kamyonet sürerken sol şeriti işgal etmelik liste')" id="Mazda">Mazda kamyonet sürerken<br>sol şeriti işgal etmelik liste</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('29iDGaspskDYyq6v8OPVtx','Yansın Ankara')" id="Ankara">Yansın Ankara</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('7M2KMprNurcSVb35h2Er2F','LC Waikiki Müzikleri')" id="LC">LC Waikiki Müzikleri</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('7wmAWbQURZa1jwYQkJEduj','Winx Club')" id="Winx">Winx Club</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('7v0k2Enal18taY4ICUkXqc','Hüseyin Aktepenin Takla Atarken Dinlediği Şarkılar')" id="huso">Hüseyin Aktepenin Takla Atarken Dinlediği Şarkılar</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('1pw9A9tfChGgB75JUixlG1','A101’de kasiyer olacağım aklıma gelince dinlediğim şarkılar')" id="a101">A101’de kasiyer olacağım aklıma gelince dinlediğim şarkılar</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('5MtVKGW6N8igrVePnAiNCF','Kangaldan kaçarken dinlenecek müzikler')" id="kangal">Kangaldan kaçarken dinlenecek müzikler</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('3XEdXscYeFKsrhHBBuS0vl','Arc Star yedikten sonra etkisinin bitmesini beklerken dinlemelik liste')" id="arc">Arc Star yedikten sonra etkisinin bitmesini beklerken dinlemelik liste</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('1r03cctB185NtCQiUQHGZM','Yıldız Sanayi önü polisten kaçarken dinlemelik liste')" id="sanayi">Yıldız Sanayi önü polisten kaçarken dinlemelik liste</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('6FbhGaCateFNDi5I6ujfnu','Kamyon çarpınca yerde 2 büklüm ambulans beklerken dinlemelik liste')" id="kamyon">Kamyon çarpınca yerde 2 büklüm ambulans beklerken dinlemelik liste</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('6s1RfV9g4NvWzeir2fwVDx','Kaybolmuşlar Listesi')" id="kayip">Kaybolmuşlar Listesi</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('1DlqdzJkRPz7Ilc9FmjZV1','Receb İvedik Mental Çöküş')" id="Receb-ivedik">Receb İvedik Mental Çöküş</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('4ZgKPCpbj5w5gsVBMeliun','Receb İvedikin DJ şarkıları')" id="Receb-ivedik2">Receb İvedik'in DJ şarkıları</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('4qA2QdJYQ82N9JP3Me8rdn','İsmet İnönünün Lozanı imzalarken dinlediği müzikler')" id="lozan">İsmet İnönünün Lozanı imzalarken dinlediği müzikler</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('5P8F3p83CfG1F1Os3xjYIm','Sınav notlarımı öğrenen aileme deli taklidi yaparken dinlediğim şarkılar')" id="not">Sınav notlarımı öğrenen aileme deli taklidi yaparken dinlediğim şarkılar</div><br>
+            <hr><br>
+            <div class="listeler" onclick="getTracksByPlaylistId('3quSIRs3wrccww0v3N24Nj','Hitlerin Fransa düşerken dinlediği müzikler')" id="kamyon">Hitlerin Fransa düşerken dinlediği müzikler</div><br>
+            <hr><br>
+        </div>  
+        <div class="playlist-img"></div>
+            <div class="player">
+                <div class="details">
+                  <div class="now-playing">PLAYING 0 OF 0</div>
+                  <div class="track-art"></div>
+                  <div class="track-name">Şarkı İsmi</div>
+                  <div class="track-artist">Sanatçı</div>
+                </div>
+                <div class="buttons">
+                    <div class="random-play" onclick="nextTrack()"><i class="fi fi-rr-shuffle icon-ana"></i></div>
+                  <div class="prev-track" onclick="prevTrack()"><i class="fi fi-rr-angle-double-left icon-ana"></i></div>
+                  <div class="playpause-track" onclick="playpauseTrack()"><i class="fi fi-rr-play icon-buyuk"></i></div>
+                  <div class="next-track" onclick="nextTrack()"><i class="fi fi-rr-angle-double-right icon-ana"></i></div>
+                  <div class="external-link" onclick="openLink()"><i class="fi fi-rr-redo icon-ana"></i></div>
+                </div>
+                <div class="slider_container">
+                  <div class="current-time">00:00</div>
+                  <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+                  <div class="total-duration">00:00</div>
+                </div>
+                <div class="slider_container">
+                  <i class="fa fa-volume-down"></i>
+                  <input type="range" min="0" max="100" value="1" class="volume_slider" onchange="setVolume()">
+                  <i class="fa fa-volume-up"></i>
+                </div>
+            </div>
+        <div class="right" id="style-4">    
+        </div> 
+    </div>
+</div>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        return "Sayfadan Çıkmak İstediğine Emin misin?";
+    }
+  </script>
+</body>
+<script src="player.js"></script>
+<script type="text/javascript" src="particle.js"></script>
+<script type="text/javascript">
+var canvas=document.getElementById("canvas"),
+    context=canvas.getContext("2d"),
+    width=canvas.width=window.innerWidth,
+    height=canvas.height=window.innerHeight,
+    dots=[];
+
+for(var i=0;i<width/20;i++){
+    var dot=particle.create(Math.random()*(width-width/20)+width/20,Math.random()*(height-height/20)+height/20,2,Math.random()*Math.PI*2);
+    dot.color='hsl('+(i%10)*30+',100%,100%)';
+    dot.size=Math.random()*3+2
+    dot.setSpeed(dot.size/8)
+    dot.friction=0.1
+    dots.push(dot)
+
+}
+var multiplier=5;
+window.onload = function() {
+    console.log("başka bir şey");
+    window.wallpaperRegisterAudioListener(wallpaperAudioListener);
+    window.wallpaperPropertyListener={
+        applyUserProperties: function(properties){
+            if(properties.multiplier){
+                multiplier=properties.multiplier.value
+            }
+            if(properties.combo){
+                if(properties.combo.value==1 && properties.background){
+                    var background=properties.background.value.split(' ').map(function(c){return Math.ceil(c*255)})
+                    canvas.style.background='rgb('+background+')'
+                }
+                else if(properties.combo.value==2 && properties.image){
+                    canvas.style.background='url(file:///img)'.replace('img',properties.image.value)
+                }
+            }else{
+                canvas.style.background="#08303E"
+            }
+        }
+    }
+};
+var leftRightAverageLowFreq=0;
+function windowAudioListener(audioArray){
+    console.log("ses");
+    var lowFreqs=audioArray.slice(0,5).concat(audioArray.slice(64,64+5));
+    var sum=lowFreqs.reduce((a,b)=> a+b,0);
+    leftRightAverageLowFreq=sum/lowFreqs.length;
+}
+
+update()
+var lol=0
+function update(){
+    lol++
+    context.clearRect(0,0,width,height)
+    for(var i in dots){
+        dots[i].color='hsl('+(i%5)*60+',100%,a%)'.replace('a',Number(100-14*multiplier*leftRightAverageLowFreq)>50?Number(100-14*multiplier*leftRightAverageLowFreq):50)
+        dots[i].update()
+        if(dots[i].x> width || dots[i].x<0){
+            dots[i].vx*=-1
+            dots[i].x=dots[i].x>width?width:0
+        }
+        if(dots[i].y>height || dots[i].y<0){
+            dots[i].vy*=-1
+            dots[i].y=dots[i].y>height?height:0
+        }
+        context.beginPath()
+        context.fillStyle=dots[i].color
+        context.moveTo(dots[i].x,dots[i].y)
+        context.arc(dots[i].x,dots[i].y,dots[i].size+4*multiplier*leftRightAverageLowFreq<20?dots[i].size+4*multiplier*leftRightAverageLowFreq:20,0,Math.PI*2,false);
+        dots[i].setSpeed(dots[i].size/4+multiplier*20*leftRightAverageLowFreq)
+        context.fill()
+        context.closePath()
+        for(var j in dots){
+            if(j!=i){
+                var dist=dots[i].distanceTo(dots[j])
+                if(dist<150){
+                    context.beginPath()
+                    context.strokeWidth=3
+                    context.strokeStyle="rgba(255,255,255,opacity)".replace("opacity",1-dist/150);
+                    context.moveTo(dots[i].x,dots[i].y)
+                    context.lineTo(dots[j].x,dots[j].y)
+                    context.stroke()
+                }
+            }
+        }
+    }
+
+
+
+    requestAnimationFrame(update)
+}
+window.onresize=function(){
+    width=canvas.width=window.innerWidth
+    height=canvas.height=window.innerHeight
+    dots=[]
+    for(var i=0;i<width/20;i++){
+        var dot=particle.create(Math.random()*(width-width/20)+width/20,Math.random()*(height-height/20)+height/20,2,Math.random()*Math.PI*2);
+        dot.color='hsl('+(i%10)*30+',100%,100%)';
+        dot.size=Math.random()*3+2
+        dot.setSpeed(dot.size/8)
+        dot.friction=0.1
+        dots.push(dot)
+
+    }
+}
+</script>
+</html>

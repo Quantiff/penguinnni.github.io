@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="tr" >
+<head>
+  <meta charset="UTF-8">
+  <title>Penguinnni Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+  @charset "UTF-8";
+  body{
+        overflow : hidden;
+        font-family: 'Red Hat Display', sans-serif;
+        margin: 0;
+        padding: 0;
+        max-width: 1920px;
+        max-height: 1080px;
+        color: hsl(230, 40%, 80%);
+        background: linear-gradient(135deg, hsl(230, 40%, 12%), hsl(230, 20%, 7%));
+        height: 100vh;    
+  }
+  canvas{
+        background:#16181B;
+        position: absolute;
+        z-index: -3;
+        filter: blur(5px);
+    }
+    .kapsayici{
+        background-color: transparent;
+    }
+    .top{
+        color: white;
+        background-color: rgba(0, 0, 0, 0.267);
+        width: 100%;
+        height: 85px;
+        align-items: center;
+        display: flex;
+        backdrop-filter: blur(10px);
+    }
+    .top img{
+        float: left;
+        padding-left: 20px; 
+        color: hsl(230, 40%, 80%);
+        animation: lights 5s 750ms linear infinite;
+    }
+    .top p{
+        padding-left: 30px; 
+        font-size: 3.6em;
+        cursor: default;
+        color: hsl(230, 40%, 80%);
+        animation: lights 5s 750ms linear infinite;
+    }
+    .login{
+        font-size: 1.5em;
+        margin-right: 40px;
+    }
+    .login button{
+        margin-left: 20px;
+        border: transparent;
+        color: black;
+        background-color: white;
+        width: 130px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: all 0.3s ease-in;
+        -moz-transition: all 0.3s ease-in;
+        -webkit-transition: all 0.3s ease-in;
+        -ms-transition: all 0.2s ease-in;
+    }
+    .login button:hover{
+        color: hsl(230, 40%, 80%);
+    }
+    .login a{
+        transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+    .login a:hover{
+        color: hsl(230, 40%, 80%);
+    }
+    hr{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: left;
+        border-color: white;
+    }
+    .playlist{
+        transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        align-items: center;
+        display:grid;
+        font-size: 1.5em;
+        cursor: default;
+    }
+    .kutular{
+        margin: auto;
+    }
+    .menu{
+        font-size: 1.6em;
+        float: left;
+        margin-right: 50px;
+        text-align: center;
+    }
+    .menu a{
+        text-decoration: none;
+        transition: all 0.2s ease-out;
+        color: white; 
+    }
+    .menu a:hover{
+        transition: all 0.2s ease-out;
+        text-decoration: none;
+        color: hsl(230, 40%, 80%);
+    }
+    @keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(230, 100%, 95%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+}
+/* Pen Title */
+.pen-title {
+  padding: 50px 0;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.pen-title h1 {
+  margin: 0 0 20px;
+  font-size: 48px;
+  font-weight: 300;
+}
+.pen-title span {
+  font-size: 12px;
+}
+.pen-title span .fa {
+  color: rgb(138, 0, 0);
+}
+.pen-title span a {
+  color: rgb(138, 0, 0);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Scroll To Bottom */
+#codepen, #portfolio {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #363636;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.3s ease;
+  color: #ffffff;
+  text-align: center;
+}
+#codepen i, #portfolio i {
+  line-height: 56px;
+}
+#codepen:hover, #portfolio:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* CodePen */
+#portfolio {
+  bottom: 96px;
+  right: 36px;
+  background: rgb(138, 0, 0);
+  width: 44px;
+  height: 44px;
+  -webkit-animation: buttonFadeInUp 1s ease;
+  animation: buttonFadeInUp 1s ease;
+}
+#portfolio i {
+  line-height: 44px;
+}
+
+/* Container */
+.container {
+  position: relative;
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto 100px;
+}
+.container.active .card:first-child {
+  background: #f2f2f2;
+  margin: 0 15px;
+}
+.container.active .card:nth-child(2) {
+  background: #fafafa;
+  margin: 0 10px;
+}
+.container.active .card.alt {
+  top: 20px;
+  right: 0;
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  padding: 60px 0 40px;
+  overflow: hidden;
+}
+.container.active .card.alt .toggle {
+  position: absolute;
+  top: 40px;
+  right: -70px;
+  box-shadow: none;
+  transform: scale(10);
+  transition: transform 0.3s ease;
+}
+.container.active .card.alt .toggle:before {
+  content: "";
+}
+.container.active .card.alt .title,
+.container.active .card.alt .input-container,
+.container.active .card.alt .button-container {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s ease;
+}
+.container.active .card.alt .title {
+  transition-delay: 0.3s;
+}
+.container.active .card.alt .input-container {
+  transition-delay: 0.4s;
+}
+.container.active .card.alt .input-container:nth-child(2) {
+  transition-delay: 0.5s;
+}
+.container.active .card.alt .input-container:nth-child(3) {
+  transition-delay: 0.6s;
+}
+.container.active .card.alt .button-container {
+  transition-delay: 0.7s;
+}
+
+/* Card */
+.card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 60px 0 40px 0;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.3s ease;
+  /* Title */
+  /* Inputs */
+  /* Button */
+  /* Footer */
+  /* Alt Card */
+}
+.card:first-child {
+  background: #fafafa;
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  margin: 0 10px;
+  padding: 0;
+}
+.card .title {
+  position: relative;
+  z-index: 1;
+  border-left: 5px solid rgb(138, 0, 0);
+  margin: 0 0 35px;
+  padding: 10px 0 10px 50px;
+  color: rgb(138, 0, 0);
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.card .input-container {
+  position: relative;
+  margin: 0 60px 50px;
+}
+.card .input-container input {
+  outline: none;
+  z-index: 1;
+  position: relative;
+  background: none;
+  width: 100%;
+  height: 60px;
+  border: 0;
+  color: #212121;
+  font-size: 24px;
+  font-weight: 400;
+}
+.card .input-container input:focus ~ label {
+  color: #9d9d9d;
+  transform: translate(-12%, -50%) scale(0.75);
+}
+.card .input-container input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
+  width: 50%;
+}
+.card .input-container input:valid ~ label {
+  color: #9d9d9d;
+  transform: translate(-12%, -50%) scale(0.75);
+}
+.card .input-container label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #757575;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 60px;
+  transition: 0.2s ease;
+}
+.card .input-container .bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #757575;
+  width: 100%;
+  height: 1px;
+}
+.card .input-container .bar:before, .card .input-container .bar:after {
+  content: "";
+  position: absolute;
+  background: rgb(138, 0, 0);
+  width: 0;
+  height: 2px;
+  transition: 0.2s ease;
+}
+.card .input-container .bar:before {
+  left: 50%;
+}
+.card .input-container .bar:after {
+  right: 50%;
+}
+.card .button-container {
+  margin: 0 60px;
+  text-align: center;
+}
+.card .button-container button {
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: 0;
+  width: 240px;
+  border: 2px solid rgb(138, 0, 0);
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.card .button-container button span {
+  position: relative;
+  z-index: 1;
+  color: rgb(138, 0, 0);
+  transition: 0.3s ease;
+}
+.card .button-container button:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  background: rgb(138, 0, 0);
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: -15px 0 0 -15px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+.card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
+  border-color: rgb(179, 0, 255);
+}
+.card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
+  color: rgb(179, 0, 255);
+}
+.card .button-container button:active span, .card .button-container button:focus span {
+  color: #ffffff;
+}
+.card .button-container button:active:before, .card .button-container button:focus:before {
+  opacity: 1;
+  transform: scale(10);
+}
+.card .footer {
+  margin: 40px 0 0;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+}
+.card .footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.card.alt {
+  position: absolute;
+  top: 40px;
+  right: -70px;
+  z-index: 10;
+  width: 140px;
+  height: 140px;
+  background: none;
+  border-radius: 100%;
+  box-shadow: none;
+  padding: 0;
+  transition: 0.3s ease;
+  /* Toggle */
+  /* Title */
+  /* Input */
+  /* Button */
+}
+.card.alt .toggle {
+  position: relative;
+  background: rgb(138, 0, 0);
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: #ffffff;
+  font-size: 58px;
+  line-height: 140px;
+  text-align: center;
+  cursor: pointer;
+}
+.card.alt .toggle:before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.card.alt .title,
+.card.alt .input-container,
+.card.alt .button-container {
+  left: 100px;
+  opacity: 0;
+  visibility: hidden;
+}
+.card.alt .title {
+  position: relative;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.card.alt .title .close {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 60px;
+  display: inline;
+  color: #ffffff;
+  font-size: 58px;
+  font-weight: 400;
+}
+.card.alt .title .close:before {
+  content: "×";
+}
+.card.alt .input-container input {
+  color: #ffffff;
+}
+.card.alt .input-container input:focus ~ label {
+  color: #ffffff;
+}
+.card.alt .input-container input:focus ~ .bar:before, .card.alt .input-container input:focus ~ .bar:after {
+  background: #ffffff;
+}
+.card.alt .input-container input:valid ~ label {
+  color: #ffffff;
+}
+.card.alt .input-container label {
+  color: rgba(255, 255, 255, 0.8);
+}
+.card.alt .input-container .bar {
+  background: rgba(255, 255, 255, 0.8);
+}
+.card.alt .button-container button {
+  width: 100%;
+  background: #ffffff;
+  border-color: #ffffff;
+}
+.card.alt .button-container button span {
+  color: rgb(138, 0, 0);
+}
+.card.alt .button-container button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+  display: none;
+}
+
+/* Keyframes */
+@-webkit-keyframes buttonFadeInUp {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+}
+@keyframes buttonFadeInUp {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+}
+h2 {
+    text-align: center;
+  margin: auto;
+  font-size: 3.5em;
+  font-weight: 300;
+  animation: lights 5s 750ms linear infinite;
+  cursor: default;
+}
+</style>
+<body>
+  <canvas id="canvas" ></canvas>
+  <div class="top">
+    <a href="index.html"><img src="resimler/logo.png" width="75" height="75"></a>
+    <div><p>Penguinnni</p></div>
+    <div class="kutular">
+    </div>
+    <div class="login"><a href="login.html">Kayıt Ol</a><a href="login.html"><button>Oturum Aç</button></a></div>
+</div>
+
+<div class="pen-title">
+  <h2>Hoşgeldiniz</h2>
+</div>
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <h1 class="title">Giriş</h1>
+    <form>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Kullanıcı Adı</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Şifre</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button><span>İleri</span></button>
+      </div>
+      <div class="footer"><a href="#">Şifrenizi mi unuttunuz?</a></div>
+    </form>
+  </div>
+  <div class="card alt">
+    <div class="toggle"></div>
+    <h1 class="title">Kayıt Ol
+      <div class="close"></div>
+    </h1>
+    <form>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Kullanıcı Adı</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Şifre</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Tekrar Şifre</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button><span>İleri</span></button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+<script>
+  $('.toggle').on('click', function() {
+  $('.container').stop().addClass('active');
+});
+$('.close').on('click', function() {
+  $('.container').stop().removeClass('active');
+});
+</script>
+<script type="text/javascript" src="particle.js"></script>
+<script type="text/javascript">
+var canvas=document.getElementById("canvas"),
+    context=canvas.getContext("2d"),
+    width=canvas.width=window.innerWidth,
+    height=canvas.height=window.innerHeight,
+    dots=[];
+
+for(var i=0;i<width/20;i++){
+    var dot=particle.create(Math.random()*(width-width/20)+width/20,Math.random()*(height-height/20)+height/20,2,Math.random()*Math.PI*2);
+    dot.color='hsl('+(i%10)*30+',100%,100%)';
+    dot.size=Math.random()*3+2
+    dot.setSpeed(dot.size/8)
+    dot.friction=0.1
+    dots.push(dot)
+
+}
+var multiplier=5;
+window.onload = function() {
+    console.log("başka bir şey");
+    window.wallpaperRegisterAudioListener(wallpaperAudioListener);
+    window.wallpaperPropertyListener={
+        applyUserProperties: function(properties){
+            if(properties.multiplier){
+                multiplier=properties.multiplier.value
+            }
+            if(properties.combo){
+                if(properties.combo.value==1 && properties.background){
+                    var background=properties.background.value.split(' ').map(function(c){return Math.ceil(c*255)})
+                    canvas.style.background='rgb('+background+')'
+                }
+                else if(properties.combo.value==2 && properties.image){
+                    canvas.style.background='url(file:///img)'.replace('img',properties.image.value)
+                }
+            }else{
+                canvas.style.background="#08303E"
+            }
+        }
+    }
+};
+var leftRightAverageLowFreq=0;
+function windowAudioListener(audioArray){
+    console.log("ses");
+    var lowFreqs=audioArray.slice(0,5).concat(audioArray.slice(64,64+5));
+    var sum=lowFreqs.reduce((a,b)=> a+b,0);
+    leftRightAverageLowFreq=sum/lowFreqs.length;
+}
+
+update()
+var lol=0
+function update(){
+    lol++
+    context.clearRect(0,0,width,height)
+    for(var i in dots){
+        dots[i].color='hsl('+(i%5)*60+',100%,a%)'.replace('a',Number(100-14*multiplier*leftRightAverageLowFreq)>50?Number(100-14*multiplier*leftRightAverageLowFreq):50)
+        dots[i].update()
+        if(dots[i].x> width || dots[i].x<0){
+            dots[i].vx*=-1
+            dots[i].x=dots[i].x>width?width:0
+        }
+        if(dots[i].y>height || dots[i].y<0){
+            dots[i].vy*=-1
+            dots[i].y=dots[i].y>height?height:0
+        }
+        context.beginPath()
+        context.fillStyle=dots[i].color
+        context.moveTo(dots[i].x,dots[i].y)
+        context.arc(dots[i].x,dots[i].y,dots[i].size+4*multiplier*leftRightAverageLowFreq<20?dots[i].size+4*multiplier*leftRightAverageLowFreq:20,0,Math.PI*2,false);
+        dots[i].setSpeed(dots[i].size/4+multiplier*20*leftRightAverageLowFreq)
+        context.fill()
+        context.closePath()
+        for(var j in dots){
+            if(j!=i){
+                var dist=dots[i].distanceTo(dots[j])
+                if(dist<150){
+                    context.beginPath()
+                    context.strokeWidth=3
+                    context.strokeStyle="rgba(255,255,255,opacity)".replace("opacity",1-dist/150);
+                    context.moveTo(dots[i].x,dots[i].y)
+                    context.lineTo(dots[j].x,dots[j].y)
+                    context.stroke()
+                }
+            }
+        }
+    }
+
+
+
+    requestAnimationFrame(update)
+}
+window.onresize=function(){
+    width=canvas.width=window.innerWidth
+    height=canvas.height=window.innerHeight
+    dots=[]
+    for(var i=0;i<width/20;i++){
+        var dot=particle.create(Math.random()*(width-width/20)+width/20,Math.random()*(height-height/20)+height/20,2,Math.random()*Math.PI*2);
+        dot.color='hsl('+(i%10)*30+',100%,100%)';
+        dot.size=Math.random()*3+2
+        dot.setSpeed(dot.size/8)
+        dot.friction=0.1
+        dots.push(dot)
+
+    }
+}
+
+window.alert("Şimdilik Oturum Açma Seçenekleri Etkin Durumda Değil")
+</script>
+</html>
