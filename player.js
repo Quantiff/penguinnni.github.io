@@ -289,7 +289,7 @@ function getTracks2() {
     name: "Space Song",               
     artist: "Beach House",             
     path: "music/beach house.mp3",               
-    image: "resimler/hand.gif",                                                    
+    image: "resimler/hand.webp",                                                    
     spotify_url: "https://www.youtube.com/playlist?list=PLL_v5eo2j3xZfGvyfxSdetCnMWduY7i61",  
   }]
   track_list = value;
