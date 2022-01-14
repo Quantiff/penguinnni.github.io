@@ -284,6 +284,13 @@ function getTracks2() {
     path: "music/Alessia Cara - Here Lucian Remix.mp3",               
     image: "resimler/plak.gif",                                                    
     spotify_url: "https://www.youtube.com/playlist?list=PLL_v5eo2j3xZfGvyfxSdetCnMWduY7i61",  
+  },
+  {
+    name: "Space Song",               
+    artist: "Beach House",             
+    path: "music/beach house.mp3",               
+    image: "resimler/hand.gif",                                                    
+    spotify_url: "https://www.youtube.com/playlist?list=PLL_v5eo2j3xZfGvyfxSdetCnMWduY7i61",  
   }]
   track_list = value;
   curr_track.volume = volume_slider.value / 100; 
