@@ -265,7 +265,7 @@ function getTracks2() {
     spotify_url: "https://www.youtube.com/playlist?list=PLL_v5eo2j3xZfGvyfxSdetCnMWduY7i61",  
   },
   {
-    name: "S K Y F A L L",               
+    name: "S",               
     artist: "Adale",             
     path: "music/skyfall.mp3",               
     image: "resimler/gun.gif",                                                    
